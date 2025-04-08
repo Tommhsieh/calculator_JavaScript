@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易計算機</title>
+</head>
+<body>
+    <h2>簡易計算機</h2>
+    <input type="number" id="num1" placeholder="第一個數字">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="number" id="num2" placeholder="第二個數字">
+    <button id="calculateBtn">計算</button>
+
+    <h3>結果：<span id="result">---</span></h3>
+
+    <script>
+        document.getElementById("calculateBtn").addEventListener("click",function(){
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const operator = document.getElementById("operator").value;
+            let result;
+
+            //防止輸入數字以外資料
+            if(isNaN(num1) || isNaN(num2)){
+                result = "請輸入有效數字"
+            }else{
+                switch(operator){
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break
+                    case "*":
+                        result = num1 * num2;
+                        break
+                    case "/":
+                        result = num2 !== 0? num1/num2 : "除數不能為0";
+                        break;
+
+                }
+            }
+            document.getElementById("result").textContent = result;
+        });
+
+    </script>
+</body>
+</html>
